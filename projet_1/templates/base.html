@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+{% load static %}
+
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>projet_1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {% block css %}{% endblock %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <!--bare de navigation visible sauf pour login-->
+    {% if not is_login_page %}
+
+
+    <nav class="navbar navbar-dark bg-primary">
+
+        <div class="container-fluid ">
+
+            <img id="logo" src="{% static 'img/logo_pinguing_200x239.png' %}" alt="Logo Pinguing" width="80">
+
+            <div>
+                <a id="lien_acceuil_acceuil" class="navbar-brand" href="{% url 'acceuil:acceuil' %}"> Acceuil </a>
+
+            </div>
+
+
+            {% if not request.user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'connexion_user:login_acceuil' %}">
+                <img src="{% static 'img/icone_perso.jpg' %}" alt="Logo" width="50" height="50"
+                     class="d-inline-block align-text-center" style="border-radius: 40px;">
+                <span class="">connexion</span>
+            </a>
+            {% else %}
+            <a class="navbar-brand" href="{% url 'connexion_user:logout' %}">
+                <img src="{% static 'img/icone_perso.jpg' %}" alt="Logo" width="50" height="50"
+                     class="d-inline-block align-text-center" style="border-radius: 40px;">
+                <span>deconnexion</span>
+            </a>
+
+            {% endif %}
+        </div>
+
+    </nav>
+
+    {% endif %}
+
+
+    {% block content %}{% endblock %}
+
+    {% block js %}{% endblock %}
+</body>
+</html>

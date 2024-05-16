@@ -1,0 +1,42 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'connexion_user/css/login.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<form method="post" action=" {% url 'connexion_user:add_user_control' %} " class="max-width-400px">
+    {% csrf_token %}
+
+    <div class="text-center">
+        <img id="icone_perso_login" src="{% static 'img/icone_perso.jpg' %}" alt="Icone perso">
+    </div>
+
+    <!--message d'erreur-->
+    {% if message_error != None %}
+    <p class="alert alert-danger" role="alert">{{message_error}}</p>
+    {% endif %}
+
+    <div class="mb-3">
+        <label class="form-label" for="username">Nom d'utilisateur :</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="password">mot de passe :</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="password2">mot de passe 2:</label>
+        <input type="password" class="form-control" id="password2" name="password2" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Connexion</button>
+
+    <!--lien de retour vers la page d'acceuil-->
+    <a href="{% url 'connexion_user:login_acceuil' %}">retour</a>
+</form>
+
+
+{% endblock %}

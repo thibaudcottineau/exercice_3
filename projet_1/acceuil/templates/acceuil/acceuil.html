@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'acceuil/css/acceuil.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="container">
+    <h1 class="text-center m-5">Bonjour</h1>
+
+    <p class="alert alert-success">Ce projet est realiser avec le framework DJANGO, SQLITE comme db et BOOTSTRAP pour le style</p>
+</article>
+
+{% endblock %}
+    
