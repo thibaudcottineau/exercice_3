@@ -1,0 +1,16 @@
+.max-width-400px{
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: black 3px 3px 10px;
+}
+
+#icone_perso_login {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 1px solid rgb(150,150,150);
+    text-align:center;
+    margin: 20px;
+}
